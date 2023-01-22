@@ -66,12 +66,14 @@ export default function Home({
 function FeaturedProjectPreview({ preview }: { preview: FeaturedProject }) {
   return (
     <article className="mb-1 rounded bg-neutral-800 p-2 shadow">
-      {preview.language && (
-        <p className="text-[10px] uppercase tracking-widest text-white">
-          {preview.language}
-        </p>
-      )}
-      <h3 className="text-[20px] text-white">{preview.name}</h3>
+      <header>
+        {preview.language && (
+          <p className="text-[10px] uppercase tracking-widest text-white">
+            {preview.language}
+          </p>
+        )}
+        <h3 className="text-[20px] text-white">{preview.name}</h3>
+      </header>
       <p className="text-secondary text-sm">{preview.description}</p>
     </article>
   );
@@ -80,12 +82,14 @@ function FeaturedProjectPreview({ preview }: { preview: FeaturedProject }) {
 function FeaturedPostPreview({ preview }: { preview: FeaturedPost }) {
   return (
     <article className="mb-1 rounded bg-neutral-800 p-2 shadow">
-      {preview.category && (
-        <p className="text-[10px] uppercase tracking-widest text-white">
-          {preview.category}
-        </p>
-      )}
-      <h3 className="text-xl text-white">{preview.title}</h3>
+      <header>
+        {preview.category && (
+          <p className="text-[10px] uppercase tracking-widest text-white">
+            {preview.category}
+          </p>
+        )}
+        <h3 className="text-xl text-white">{preview.title}</h3>
+      </header>
       <p className="mb-3 text-sm">{preview.description}</p>
       <ul className="flex text-xs">
         {preview.tags.map((tag, idx) => (

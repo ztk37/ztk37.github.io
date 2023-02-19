@@ -1,6 +1,7 @@
 import { GetStaticProps } from "next";
-import Head from "next/head";
 import { ReactElement } from "react";
+import Container from "~/components/container";
+import BaseLayout from "~/layouts/base";
 
 type FeaturedProject = {
   language: string;
@@ -27,39 +28,35 @@ export default function Home({
   featuredPosts = [],
 }: Props): ReactElement {
   return (
-    <>
-      <Head>
-        <title>Home</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    <Container meta={{ title: "Home", description: "Home Page" }}>
+      <BaseLayout>
+        <main>
+          <h1 className="sr-only">Home</h1>
+          <section className="mx-2">
+            <h2 className="mb-2 text-2xl text-white">Featured Projects</h2>
 
-      <main>
-        <h1 className="sr-only">Home</h1>
-        <section className="mx-2">
-          <h2 className="mb-2 text-2xl text-white">Featured Projects</h2>
-
-          <div className="flex flex-col">
-            {featuredProjects.map((project, idx) => (
-              <FeaturedProjectPreview
-                key={`project-${idx}`}
-                preview={project}
-              />
-            ))}
-          </div>
-          {/* <p><Link href="/projects">View More</Link></p> */}
-        </section>
-        <section className="mx-2">
-          <h2 className="mb-2 text-2xl text-white">Featured Posts</h2>
-          <div className="flex flex-col">
-            {featuredPosts.map((post, idx) => (
-              <FeaturedPostPreview key={`post-${idx}`} preview={post} />
-            ))}
-          </div>
-          {/* <p><Link href="/posts">View More</Link></p> */}
-        </section>
-      </main>
-    </>
+            <div className="flex flex-col">
+              {featuredProjects.map((project, idx) => (
+                <FeaturedProjectPreview
+                  key={`project-${idx}`}
+                  preview={project}
+                />
+              ))}
+            </div>
+            {/* <p><Link href="/projects">View More</Link></p> */}
+          </section>
+          <section className="mx-2">
+            <h2 className="mb-2 text-2xl text-white">Featured Posts</h2>
+            <div className="flex flex-col">
+              {featuredPosts.map((post, idx) => (
+                <FeaturedPostPreview key={`post-${idx}`} preview={post} />
+              ))}
+            </div>
+            {/* <p><Link href="/posts">View More</Link></p> */}
+          </section>
+        </main>
+      </BaseLayout>
+    </Container>
   );
 }
 

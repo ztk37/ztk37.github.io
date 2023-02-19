@@ -8,6 +8,10 @@
   --text-secondary: #a6a6a6;
 }
 
+#__next {
+  background-color: #1f1f1f;
+}
+
 body {
   background-color: var(--page-background);
   font-family: Inter, Arial, Helvetica, sans-serif;

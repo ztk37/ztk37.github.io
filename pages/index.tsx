@@ -1,16 +1,13 @@
-import Head from "next/head";
+import { ReactElement } from "react";
+import Container from "~/components/container";
+import BaseLayout from "~/layouts/base";
 
-export default function Home() {
+export default function Home(): ReactElement {
   return (
-    <>
-      <Head>
-        <title>Home</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <main>
+    <Container meta={{ title: "Home", description: "Home Page" }}>
+      <BaseLayout>
         <h1 className="uppercase">Home</h1>
-      </main>
-    </>
+      </BaseLayout>
+    </Container>
   );
 }

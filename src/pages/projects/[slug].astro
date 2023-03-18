@@ -1,0 +1,9 @@
+---
+import BaseLayout from "~/layouts/BaseLayout.astro";
+
+const { slug } = Astro.params
+---
+
+<BaseLayout title="Single Project" description="Single Project Page">
+  <h1>Single Project {slug}</h1>
+</BaseLayout>

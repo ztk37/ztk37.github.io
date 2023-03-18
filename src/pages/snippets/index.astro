@@ -1,0 +1,23 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "~/layouts/BaseLayout.astro";
+
+export const prerender = true;
+
+const snippets = await getCollection<"snippets">("snippets");
+
+---
+
+<BaseLayout title="Snippets" description="Snippets Page">
+  <h1>Snippets</h1>
+
+  <ul>
+    {
+      snippets.map(({ slug }) => (
+        <li>
+          <a href={`/snippets/${slug}`}>Link</a>
+        </li>
+      ))
+    }
+  </ul>
+</BaseLayout>

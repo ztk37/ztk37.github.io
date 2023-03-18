@@ -1,0 +1,63 @@
+---
+import GitHubIcon from "~/icons/GitHubIcon.astro";
+import TwitterIcon from "~/icons/TwitterIcon.astro";
+
+export interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+
+const pathname = new URL(Astro.request.url).pathname;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <header>
+      <nav class="container mx-auto max-w-5xl md:max-w-4xl">
+        <menu role="menubar" class="flex justify-end gap-2">
+          <li>
+            <a class:list={{ "underline": pathname === "/" }} href="/"
+              >Home</a>
+          </li>
+          <li>
+            <a
+              class:list={{ "underline": pathname === "/projects" }}
+              href="/projects">Projects</a
+            >
+          </li>
+          <li>
+            <a
+              class:list={{ "underline": pathname === "/posts" }}
+              href="/posts">Posts</a
+            >
+          </li>
+          <li>
+            <a
+              class:list={{ "underline": pathname === "/snippets" }}
+              href="/snippets">Snippets</a
+            >
+          </li>
+          <li><a href="#"><TwitterIcon /></a></li>
+          <li><a href="https://github.com/ztk37"><GitHubIcon /></a></li>
+        </menu>
+      </nav>
+    </header>
+    <main class="container mx-auto max-w-5xl md:max-w-4xl">
+      <slot />
+    </main>
+    <footer class="text-center">
+      &copy; Copyright 2023. All rights reserved.
+    </footer>
+  </body>
+</html>

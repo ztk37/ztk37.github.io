@@ -6,12 +6,3 @@ hidden: false
 ---
 
 # Artisan
-
-{
-},
-{
-
-},
-{
-
-},

@@ -16,7 +16,7 @@ export default function Search({
 }): ReactElement {
   const [searchTerm, setSearchTerm] = useState("");
 
-  const fuse = useMemo(() => new Fuse(items, options), [items]);
+  const fuse = useMemo(() => new Fuse(items, options), [items, options]);
 
   const results = useMemo(() => fuse.search(searchTerm), [fuse, searchTerm]);
 

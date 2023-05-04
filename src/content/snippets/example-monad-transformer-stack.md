@@ -1,4 +1,6 @@
 ---
+title: "Example Monad Transformer Stack"
+summary: "Summary for Example Monad Transformer Stack"
 language: "Haskell"
 ---
 

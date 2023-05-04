@@ -1,4 +1,6 @@
 ---
+title: "Using Prisma in Next.js"
+summary: "Summary for Using Prisma in Next.js"
 language: "TypeScript"
 ---
 

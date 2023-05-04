@@ -1,23 +1,19 @@
 ---
 import { getCollection } from "astro:content";
+import Search, { SearchableItem } from "~/components/Search";
 import BaseLayout from "~/layouts/BaseLayout.astro";
 
-export const prerender = true;
+const snippets = (await getCollection("snippets")).map<SearchableItem>((snippet) => ({
+  title: snippet.data.title,
+  summary: snippet.data.summary,
+  url: `http://localhost:3000/snippets/${snippet.slug}`,
+}));
 
-const snippets = await getCollection<"snippets">("snippets");
-
+const options = {
+  keys: ["title", "summary"],
+};
 ---
 
 <BaseLayout title="Snippets" description="Snippets Page">
-  <h1>Snippets</h1>
-
-  <ul>
-    {
-      snippets.map(({ slug }) => (
-        <li>
-          <a href={`/snippets/${slug}`}>Link</a>
-        </li>
-      ))
-    }
-  </ul>
+  <Search client:idle items={snippets} options={options} />
 </BaseLayout>

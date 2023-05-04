@@ -27,7 +27,7 @@ export default function Search({
         <input
           type="search"
           autoComplete="-1"
-          placeholder="Search term..."
+          placeholder="Search..."
           onChange={(evt) => setSearchTerm(evt.currentTarget.value)}
         />
       </div>

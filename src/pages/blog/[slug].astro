@@ -24,7 +24,7 @@ const { post } = Astro.props;
 const { Content } = await post.render();
 ---
 
-<BaseLayout title="Single Post" description="Single Post Page">
+<BaseLayout title={`Blog | ${post.data.title}`} description={post.data.summary}>
   <article>
     <Content />
   </article>

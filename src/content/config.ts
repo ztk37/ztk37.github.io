@@ -1,11 +1,21 @@
 import { defineCollection, z } from "astro:content";
 
+const tag = z.enum([
+  "TypeScript",
+  "JavaScript",
+  "React",
+  "Tailwind",
+  "Design Patterns",
+]);
+
+export type Tag = z.infer<typeof tag>;
+
 const blog = defineCollection({
   schema: z.object({
     category: z.string(),
     title: z.string(),
     summary: z.string(),
-    tags: z.array(z.string()),
+    tags: z.array(tag),
     hidden: z.boolean(),
   }),
 });

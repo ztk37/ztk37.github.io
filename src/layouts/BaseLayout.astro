@@ -1,5 +1,5 @@
 ---
-// import GitHubIcon from "~/icons/GitHubIcon.astro";
+import GitHubIcon from "~/icons/GitHubIcon.astro";
 // import TwitterIcon from "~/icons/TwitterIcon.astro";
 
 export interface Props {
@@ -22,28 +22,28 @@ const pathname = new URL(Astro.request.url).pathname;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
   </head>
-  <body>
+  <body class="antialiased">
     <header>
-      <nav class="container mx-auto max-w-5xl md:max-w-4xl">
-        <menu role="menubar" class="flex justify-end gap-2">
-          <li>
-            <a class:list={{ underline: pathname === "/" }} href="/">Home</a>
-          </li>
-          <li>
-            <a class:list={{ underline: pathname === "/blog" }} href="/blog"
-              >Blog</a
-            >
-          </li>
-          <li>
-            <a
-              class:list={{ underline: pathname === "/snippets" }}
-              href="/snippets">Snippets</a
-            >
-          </li>
-          <!-- <li><a href="#"><TwitterIcon /></a></li>
-          <li><a href="https://github.com/ztk37"><GitHubIcon /></a></li> -->
-        </menu>
-      </nav>
+      <div class="container mx-auto max-w-5xl md:max-w-4xl">
+        <nav class="flex justify-between">
+          <a class:list={{ underline: pathname === "/" }} href="/">Home</a>
+          <menu role="menubar" class="flex justify-end gap-2">
+            <li>
+              <a class:list={{ underline: pathname === "/blog" }} href="/blog"
+                >Blog</a
+              >
+            </li>
+            <li>
+              <a
+                class:list={{ underline: pathname === "/snippets" }}
+                href="/snippets">Snippets</a
+              >
+            </li>
+            <li><a href="https://github.com/ztk37"><GitHubIcon /></a></li>
+            <!-- <li><a href="#"><TwitterIcon /></a></li> -->
+          </menu>
+        </nav>
+      </div>
     </header>
     <main class="container mx-auto max-w-5xl md:max-w-4xl">
       <slot />

@@ -6,6 +6,7 @@ import BaseLayout from "~/layouts/BaseLayout.astro";
 const snippets = (await getCollection("snippets")).map<SearchableItem>((snippet) => ({
   title: snippet.data.title,
   summary: snippet.data.summary,
+  tags: [],
   url: `http://localhost:3000/snippets/${snippet.slug}`,
 }));
 

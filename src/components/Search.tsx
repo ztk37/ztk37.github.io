@@ -4,6 +4,7 @@ import { ReactElement, useMemo, useState } from "react";
 export type SearchableItem = {
   title: string;
   summary: string;
+  tags: string[];
   url: string;
 };
 
@@ -27,13 +28,20 @@ export default function Search({
           type="search"
           autoComplete="-1"
           placeholder="Search term..."
-          onInput={(evt) => setSearchTerm(evt.currentTarget.value)}
+          onChange={(evt) => setSearchTerm(evt.currentTarget.value)}
         />
       </div>
       <ul>
         {searchTerm === ""
           ? items.map((item) => (
               <li>
+                {item.tags.length > 0 && (
+                  <ul className="flex gap-1">
+                    {item.tags.map((tag) => (
+                      <li>{tag}</li>
+                    ))}
+                  </ul>
+                )}
                 <h2>{item.title}</h2>
                 <p>{item.summary}</p>
                 <p>
@@ -43,6 +51,13 @@ export default function Search({
             ))
           : results.map((result) => (
               <li>
+                {result.item.tags.length > 0 && (
+                  <ul className="flex gap-1">
+                    {result.item.tags.map((tag) => (
+                      <li>{tag}</li>
+                    ))}
+                  </ul>
+                )}
                 <h2>{result.item.title}</h2>
                 <p>{result.item.summary}</p>
                 <p>

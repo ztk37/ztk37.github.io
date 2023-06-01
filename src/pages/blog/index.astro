@@ -3,12 +3,14 @@ import { getCollection } from "astro:content";
 import Search, { SearchableItem } from "~/components/Search";
 import BaseLayout from "~/layouts/BaseLayout.astro";
 
-const posts = (await getCollection("blog")).filter(post => !post.data.hidden).map<SearchableItem>((post) => ({
-  title: post.data.title,
-  summary: post.data.summary,
-  tags: post.data.tags,
-  url: `http://localhost:3000/blog/${post.slug}`,
-}));
+const posts = (await getCollection("blog"))
+  .filter((post) => !post.data.hidden)
+  .map<SearchableItem>((post) => ({
+    title: post.data.title,
+    summary: post.data.summary,
+    tags: post.data.tags,
+    url: `http://localhost:3000/blog/${post.slug}`,
+  }));
 
 const options = {
   keys: ["title", "summary", "tags"],

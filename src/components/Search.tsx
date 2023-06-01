@@ -38,7 +38,7 @@ export default function Search({
                 {item.tags.length > 0 && (
                   <ul className="flex gap-1">
                     {item.tags.map((tag) => (
-                      <li>{tag}</li>
+                      <li key={tag}>{tag}</li>
                     ))}
                   </ul>
                 )}
@@ -54,7 +54,7 @@ export default function Search({
                 {result.item.tags.length > 0 && (
                   <ul className="flex gap-1">
                     {result.item.tags.map((tag) => (
-                      <li>{tag}</li>
+                      <li key={tag}>{tag}</li>
                     ))}
                   </ul>
                 )}

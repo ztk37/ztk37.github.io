@@ -1,7 +1,7 @@
 ---
 language: "Rust"
 name: "Artisan"
-description: "A TOML based Project Generator"
+summary: "A TOML based Project Generator"
 hidden: false
 ---
 

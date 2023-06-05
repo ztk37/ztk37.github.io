@@ -32,13 +32,14 @@ const pathname = new URL(Astro.request.url).pathname;
             <a class:list={{ underline: pathname === "/" }} href="/">Home</a>
           </li>
           <li>
-            <a class:list={{ underline: pathname === "/blog" }} href="/blog"
-              >Blog</a
+            <a
+              class:list={{ underline: pathname.includes("/blog") }}
+              href="/blog">Blog</a
             >
           </li>
           <li>
             <a
-              class:list={{ underline: pathname === "/snippets" }}
+              class:list={{ underline: pathname.includes("/snippets") }}
               href="/snippets">Snippets</a
             >
           </li>

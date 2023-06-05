@@ -1,7 +1,25 @@
 ---
+import { getCollection } from "astro:content";
 import BaseLayout from "~/layouts/BaseLayout.astro";
+
+const posts = await getCollection("blog");
 ---
 
 <BaseLayout title="Home" description="Home Page">
   <h1 class="sr-only">Home</h1>
+
+  <section>
+    <h2 class="font-bold text-white text-xl mb-2">Featured Posts</h2>
+
+    {
+      posts.slice(0, 2).map((post) => (
+        <a href={`/blog/${post.slug}`}>
+          <article class="bg-[#1f2023] text-white my-2 p-2 rounded">
+            <h3 class="font-bold">{post.data.title}</h3>
+            <p>{post.data.summary}</p>
+          </article>
+        </a>
+      ))
+    }
+  </section>
 </BaseLayout>

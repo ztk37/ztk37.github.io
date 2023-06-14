@@ -3,12 +3,14 @@ import { getCollection } from "astro:content";
 import Search, { SearchableItem } from "~/components/Search";
 import BaseLayout from "~/layouts/BaseLayout.astro";
 
-const snippets = (await getCollection("snippets")).map<SearchableItem>((snippet) => ({
-  title: snippet.data.title,
-  summary: snippet.data.summary,
-  tags: [],
-  url: `http://localhost:3000/snippets/${snippet.slug}`,
-}));
+const snippets = (await getCollection("snippets")).map<SearchableItem>(
+  (snippet) => ({
+    title: snippet.data.title,
+    summary: snippet.data.summary,
+    tags: [],
+    url: `/snippets/${snippet.slug}`,
+  })
+);
 
 const options = {
   keys: ["title", "summary"],

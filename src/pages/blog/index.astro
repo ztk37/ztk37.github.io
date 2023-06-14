@@ -9,7 +9,7 @@ const posts = (await getCollection("blog"))
     title: post.data.title,
     summary: post.data.summary,
     tags: post.data.tags,
-    url: `http://localhost:3000/blog/${post.slug}`,
+    url: `/blog/${post.slug}`,
   }));
 
 const options = {

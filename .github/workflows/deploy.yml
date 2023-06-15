@@ -47,7 +47,7 @@ jobs:
         with:
           node-version: 18
           cache: pnpm
-          cache-dependency-path: "./pnom-lock.yaml"
+          cache-dependency-path: "./pnpm-lock.yaml"
       - name: Install
         shell: "bash"
         run: pnpm install

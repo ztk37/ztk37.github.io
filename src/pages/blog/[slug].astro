@@ -25,7 +25,7 @@ const { Content } = await post.render();
 ---
 
 <BaseLayout title={`Blog | ${post.data.title}`} description={post.data.summary}>
-  <article>
+  <article class="prose">
     <Content />
   </article>
 </BaseLayout>

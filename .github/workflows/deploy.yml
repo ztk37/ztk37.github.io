@@ -50,7 +50,7 @@ jobs:
           cache-dependency-path: "./pnpm-lock.yaml"
       - name: Install
         shell: "bash"
-        run: pnpm install
+        run: pnpm install --no-frozen-lockfile
 
       - name: Build
         shell: "bash"

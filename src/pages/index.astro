@@ -6,34 +6,15 @@ const posts = await getCollection("blog");
 ---
 
 <BaseLayout title="Home" description="Home Page">
-  <header>
-    <nav>
-      <menu class="flex gap-3 my-8">
-        <li
-          class="text-neutral-400 hover:text-neutral-200 hover:cursor-pointer"
-        >
-          <a href="/" aria-label="home">home</a>
-        </li>
-        <!-- <li
-          class="text-neutral-400 hover:text-neutral-200 hover:cursor-pointer"
-        >
-          blog
-        </li> -->
-        <!-- <li
-          class="text-neutral-400 hover:text-neutral-200 hover:cursor-pointer"
-        >
-          snippets
-        </li> -->
-      </menu>
-    </nav>
-  </header>
-  <main>
-    <h1 class="sr-only">Home</h1>
-    <section>
-      <h2 class="font-bold text-2xl text-neutral-100 mb-8">Featured Posts</h2>
-      <ul class="flex flex-col space-y-4 w-full">
-        {
-          posts.filter(post => !post.data.hidden).slice(0, 3).map((post) => (
+  <h1 class="sr-only">Home</h1>
+  <section>
+    <h2 class="font-bold text-2xl text-neutral-100 mb-8">Featured Posts</h2>
+    <ul class="flex flex-col space-y-4 w-full">
+      {
+        posts
+          .filter((post) => !post.data.hidden)
+          .slice(0, 3)
+          .map((post) => (
             <li>
               <a href={`/blog/${post.slug}`}>
                 <article class="bg-neutral-800 p-8 rounded">
@@ -69,9 +50,9 @@ const posts = await getCollection("blog");
               </a>
             </li>
           ))
-        }
-      </ul>
-      <!-- <ul>
+      }
+    </ul>
+    <!-- <ul>
         <li class="mb-4">
           <article
             class="p-8 rounded bg-neutral-800 hover:bg-neutral-700 hover:cursor-pointer"
@@ -209,9 +190,5 @@ const posts = await getCollection("blog");
             </footer>
           </article>
         </li> -->
-    </section>
-  </main>
+  </section>
 </BaseLayout>
-<!-- <footer>
-    <p class="text-center">&copy; Copyright 2023. All rights reserved.</p>
-  </footer> -->

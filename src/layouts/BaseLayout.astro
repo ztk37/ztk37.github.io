@@ -25,8 +25,36 @@ const { title, description } = Astro.props;
     <title>{title}</title>
   </head>
   <!-- <body class="antialiased bg-neutral-900 max-w-2xl mx-4 md:mx-auto"> -->
-  <body class="antialiased bg-neutral-900 text-neutral-400 mx-4 mt-8 mb-40 md:mx-auto max-w-2xl">
-    <slot />
+  <body
+    class="antialiased bg-neutral-900 text-neutral-400 mx-4 mt-8 mb-40 md:mx-auto max-w-2xl"
+  >
+    <header>
+      <nav>
+        <menu class="flex gap-3 my-8">
+          <li
+            class="text-neutral-400 hover:text-neutral-200 hover:cursor-pointer"
+          >
+            <a href="/" aria-label="home">home</a>
+          </li>
+          <!-- <li
+            class="text-neutral-400 hover:text-neutral-200 hover:cursor-pointer"
+          >
+            blog
+          </li> -->
+          <!-- <li
+            class="text-neutral-400 hover:text-neutral-200 hover:cursor-pointer"
+          >
+            snippets
+          </li> -->
+        </menu>
+      </nav>
+    </header>
+    <main>
+      <slot />
+    </main>
+    <footer class="my-8">
+      <p class="text-center">&copy; Copyright 2023. All rights reserved.</p>
+    </footer>
   </body>
 </html>
 

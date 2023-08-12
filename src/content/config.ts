@@ -1,5 +1,13 @@
 import { defineCollection, z } from "astro:content";
 
+/**
+ * TODO: Refactor
+ * 
+ * tags => technologies
+ * 
+ * Technologie enum type => util function for "rendering"
+ */
+
 const tag = z.enum([
   "TypeScript",
   "JavaScript",

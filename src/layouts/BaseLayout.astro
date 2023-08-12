@@ -1,7 +1,7 @@
 ---
-import ThemeToggle from "~/components/ThemeToggle";
-import GitHubIcon from "~/icons/GitHubIcon.astro";
-// import TwitterIcon from "~/icons/TwitterIcon.astro";
+// import ThemeToggle from "~/components/ThemeToggle";
+// import GitHubIcon from "~/icons/GitHubIcon.astro";
+// // import TwitterIcon from "~/icons/TwitterIcon.astro";
 
 export interface Props {
   title: string;
@@ -10,7 +10,7 @@ export interface Props {
 
 const { title, description } = Astro.props;
 
-const pathname = new URL(Astro.request.url).pathname;
+// const pathname = new URL(Astro.request.url).pathname;
 ---
 
 <!DOCTYPE html>
@@ -24,7 +24,13 @@ const pathname = new URL(Astro.request.url).pathname;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
   </head>
-  <body class="antialiased">
+  <!-- <body class="antialiased bg-neutral-900 max-w-2xl mx-4 md:mx-auto"> -->
+  <body class="antialiased bg-neutral-900 text-neutral-400 mx-4 mt-8 mb-40 md:mx-auto max-w-2xl">
+    <slot />
+  </body>
+</html>
+
+<!-- 
     <header class="bg-[#1f2023]">
       <nav
         class="container mx-auto max-w-5xl md:max-w-4xl flex justify-between py-4 px-4 md:px-0 text-white"
@@ -89,4 +95,4 @@ const pathname = new URL(Astro.request.url).pathname;
       scroll-behavior: smooth;
     }
   </style>
-</html>
+</html> -->

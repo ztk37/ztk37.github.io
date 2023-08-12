@@ -24,7 +24,7 @@ const blog = defineCollection({
     title: z.string(),
     summary: z.string(),
     tags: z.array(tag),
-    hidden: z.boolean(),
+    draft: z.boolean(),
   }),
 });
 

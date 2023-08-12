@@ -3,7 +3,7 @@ category: "Web Development"
 title: "Concatenating classes in TailwindCSS with TypeScript"
 summary: "Summary for Concatenating classes in TailwindCSS with TypeScript"
 tags: ["Tailwind", "JavaScript", "TypeScript", "React"]
-hidden: false
+draft: false
 ---
 
 # Concatenating classes in TailwindCSS with TypeScript

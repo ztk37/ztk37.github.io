@@ -1,19 +1,30 @@
 ---
+import type { GetStaticPathsOptions } from "astro";
 import { getCollection } from "astro:content";
 import BaseLayout from "~/layouts/BaseLayout.astro";
 
-const posts = await getCollection("blog", (entry) =>
-  process.env["NODE_ENV"] === "production" ? !entry.data.draft : true
-);
+export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
+  const posts = await getCollection("blog", (entry) =>
+    process.env["NODE_ENV"] === "production" ? !entry.data.draft : true
+  );
+
+  return paginate(posts, { pageSize: 3 });
+}
+
+const { page } = Astro.props;
+const currentPage = page.currentPage ?? 1;
 ---
 
-<BaseLayout title="Home" description="Home Page">
-  <h1 class="sr-only">Home</h1>
+<BaseLayout
+  title={`Blog${currentPage > 1 ? ` — Page ${currentPage}` : ""}`}
+  description=""
+>
+  <h1 class="sr-only">Blog</h1>
   <section>
-    <h2 class="font-bold text-2xl text-neutral-100 mb-8">Featured Posts</h2>
+    <h2 class="font-bold text-2xl text-neutral-100 mb-8">All Posts</h2>
     <ul class="flex flex-col space-y-4 w-full">
       {
-        posts.slice(0, 3).map((post) => (
+        page.data.map((post) => (
           <li>
             <a href={`/blog/${post.slug}`}>
               <article class="bg-neutral-800 p-8 rounded">
@@ -49,5 +60,24 @@ const posts = await getCollection("blog", (entry) =>
         ))
       }
     </ul>
+    <!-- <pre>{JSON.stringify({
+      start: page.start,
+    end: page.end,
+    size: page.size,
+    total: page.total,
+    currentPage: page.currentPage,
+    lastPage: page.lastPage,
+    url: page.url
+    }, null, 2)}</pre>
+    <p>Page {page.currentPage} / {page.total}</p> -->
+    <div class="flex justify-between">
+      <div>
+        {page.url.prev && <a href={page.url.prev}>Prev</a>}
+      </div>
+      <div>{page.currentPage} / {page.lastPage}</div>
+      <div>
+        {page.url.next && <a href={page.url.next}>Next</a>}
+      </div>
+    </div>
   </section>
 </BaseLayout>
